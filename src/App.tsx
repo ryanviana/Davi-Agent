@@ -3,9 +3,10 @@ import { useApp, TOTAL_PARADO, N_OPORTUNIDADES, N_SEM_RESPOSTA } from './store'
 import type { Conversa, Mensagem } from './types'
 import QR from './ui/QR'
 import {
-  IcStatus, IcMenu, IcBusca, IcEmoji, IcClipe,
+  IcStatus, IcCanal, IcMenu, IcBusca, IcEmoji, IcVideo, IcMais,
   IcMic, IcEnviar, IcDavi, IcPin, IcTick, IcPlay, IcNovaConversa, IcConfig,
   IcChatCheio, IcLigacao, IcComunidade, IcCatalogo, IcTransmissao, IcMidia, IcSeta, IcCadeado,
+  IcLigacaoCheia,
 } from './ui/Icons'
 
 const AGORA = new Date(2026, 7, 19, 11, 4)
@@ -55,7 +56,7 @@ function Linha({ c, on, onClick, digitando }: { c: Conversa; on: boolean; onClic
         </div>
         <div className="row-l2">
           <span className={`row-prev${ult?.autor === 'davi' ? ' davi' : ''}`}>
-            {digitando ? <i style={{ color: '#00d18f', fontStyle: 'normal' }}>digitando…</i>
+            {digitando ? <i style={{ color: '#21C063', fontStyle: 'normal' }}>digitando…</i>
               : <>{prefixo}{ult?.audio ? '🎤 Áudio' : ult?.texto}</>}
           </span>
           {c.naoLidas > 0 && <span className="badge">{c.naoLidas}</span>}
@@ -107,7 +108,7 @@ function Lateral() {
   return (
     <div className="left">
       <div className="left-head">
-        <span className="left-title">Studio Lumi</span>
+        <span className="left-title">WhatsApp</span>
         <div className="head-icons">
           <button className="icon-btn"><IcNovaConversa /></button>
           <button className="icon-btn"><IcMenu /></button>
@@ -115,7 +116,7 @@ function Lateral() {
       </div>
       <div className="search-wrap">
         <div className="search">
-          <span style={{ color: '#8696a0' }}><IcBusca /></span>
+          <span style={{ color: 'rgba(255,255,255,.6)' }}><IcBusca /></span>
           <input placeholder="Pesquisar ou começar uma nova conversa" value={busca} onChange={(e) => setBusca(e.target.value)} />
         </div>
       </div>
@@ -186,9 +187,11 @@ function Conversa_({ c }: { c: Conversa }) {
         <Av c={c} tam={40} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
           <span className="th-name">{c.nome}</span>
-          <span className="th-sub">{digitando ? <i style={{ color: '#00d18f', fontStyle: 'normal' }}>digitando…</i> : 'online'}</span>
+          <span className="th-sub">{digitando ? <i style={{ color: '#21C063', fontStyle: 'normal' }}>digitando…</i> : 'online'}</span>
         </div>
         {rodando && <span className="tag-davi"><i />Davi conduzindo</span>}
+        <button className="icon-btn"><IcVideo /></button>
+        <button className="icon-btn"><IcLigacaoCheia /></button>
         <button className="icon-btn"><IcBusca size={20} /></button>
         <button className="icon-btn"><IcMenu /></button>
       </div>
@@ -222,8 +225,8 @@ function Conversa_({ c }: { c: Conversa }) {
       </div>
 
       <div className="composer">
+        <button className="icon-btn"><IcMais /></button>
         <button className="icon-btn"><IcEmoji /></button>
-        <button className="icon-btn"><IcClipe /></button>
         <div className="field">
           <textarea rows={1} placeholder="Digite uma mensagem" value={rascunho}
             onChange={(e) => setRascunho(e.target.value)}
@@ -240,9 +243,13 @@ function Conversa_({ c }: { c: Conversa }) {
 /* ------------------------------------------------------------- chat Davi */
 
 function ChatDavi() {
-  const { daviItens, daviFase, scan, lerConversas, autorizar, conversas } = useApp()
+  const { daviItens, daviFase, scan, lerConversas, autorizar, conversas, recuperado, pensando, falarComDavi } = useApp()
   const fim = useRef<HTMLDivElement>(null)
-  useEffect(() => { fim.current?.scrollIntoView({ behavior: 'smooth' }) }, [daviItens.length, daviFase, scan])
+  const [rascunho, setRascunho] = useState('')
+  useEffect(() => { fim.current?.scrollIntoView({ behavior: 'smooth' }) }, [daviItens.length, daviFase, scan, pensando])
+  const mandar = () => { const t = rascunho.trim(); if (!t || pensando) return; setRascunho(''); void falarComDavi(t) }
+
+  const lidas = Math.round(scan * conversas.length)
 
   return (
     <>
@@ -250,74 +257,72 @@ function ChatDavi() {
         <Av c={{ iniciais: 'D' }} tam={40} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
           <span className="th-name">Davi</span>
-          <span className="th-sub" style={{ color: '#00d18f' }}>
-            {daviFase === 'trabalhando' ? 'vendendo agora' : 'online'}
+          <span className="th-sub" style={{ color: recuperado ? '#21C063' : undefined }}>
+            {pensando ? 'digitando…' : recuperado ? `${brl(recuperado)} recuperados hoje` : daviFase === 'trabalhando' ? 'vendendo agora' : 'online'}
           </span>
         </div>
+        <button className="icon-btn"><IcVideo /></button>
+        <button className="icon-btn"><IcLigacaoCheia /></button>
+        <button className="icon-btn"><IcBusca size={20} /></button>
+        <button className="icon-btn"><IcMenu /></button>
       </div>
 
       <div className="wall">
         <div className="divider"><span>hoje</span></div>
+
         {daviItens.map((it) => {
-          if (it.tipo === 'davi') return (
-            <div className="msg" key={it.id}><div className="msg-col">
-              <div className="bub them">{it.texto}<span className="meta">{hhmm(AGORA)}</span></div>
-            </div></div>
-          )
-          if (it.tipo === 'scan') return (
-            <div className="msg" key={it.id}><div className="msg-col" style={{ maxWidth: '72%' }}>
-              <div className="card-davi">
-                <div className="scan">
-                  <span className="card-lbl">LENDO</span>
-                  <div className="scan-bar"><i style={{ width: `${scan * 100}%` }} /></div>
-                  <span className="scan-txt">{Math.round(scan * conversas.length)} de {conversas.length} conversas</span>
-                </div>
-              </div>
-            </div></div>
-          )
-          if (it.tipo === 'proposta') return (
-            <div className="msg" key={it.id}><div className="msg-col" style={{ maxWidth: '72%' }}>
-              <div className="card-davi">
-                <span className="card-lbl">ACHEI</span>
-                <span className="card-num">{brl(TOTAL_PARADO)}</span>
-                <span className="card-sub">
-                  parados em {N_OPORTUNIDADES} clientes. Tem gente que pagou pacote e sumiu no meio, gente esperando preço,
-                  e gente que fechou e nunca mandou o Pix.
-                </span>
-                <div className="acts">
-                  <button className="act" onClick={autorizar} disabled={useApp.getState().daviFase !== 'proposta'}>
-                    Pode buscar
-                  </button>
-                  <button className="act ghost">Quero ver antes</button>
-                </div>
-              </div>
-            </div></div>
-          )
+          const texto =
+            it.tipo === 'scan'
+              ? (scan < 1 ? `Lendo suas conversas… ${lidas} de ${conversas.length}` : `Li as ${conversas.length} conversas ✓`)
+              : it.tipo === 'proposta'
+                ? `Pronto. Tem ${brl(TOTAL_PARADO)} parados aí, espalhados em ${N_OPORTUNIDADES} clientes.\n\nTem gente que pagou pacote e parou na metade, gente que pediu preço e nunca teve resposta, e gente que fechou e nunca mandou o Pix.\n\nQuer que eu vá atrás?`
+                : it.tipo === 'venda'
+                  ? `${it.rotulo} · + ${brl(it.valor!)} ✓`
+                  : it.texto ?? ''
+          const ultimo = it === daviItens[daviItens.length - 1]
+          const botoes =
+            it.tipo === 'proposta' && daviFase === 'proposta'
+              ? [{ t: 'Pode ir buscar', fn: autorizar }, { t: 'Quero ver a lista', fn: () => {} }]
+              : ultimo && it.tipo === 'davi' && daviFase === 'apresentando'
+                ? [{ t: 'Pode ler', fn: lerConversas }]
+                : null
+          const meu = it.tipo === 'dono'
           return (
-            <div className="msg" key={it.id}><div className="msg-col" style={{ maxWidth: '72%' }}>
-              <div className="card-davi card-venda">
-                <span className="card-lbl">VENDA FECHADA</span>
-                <span className="card-num">+ {brl(it.valor!)}</span>
-                <span className="card-sub">{it.rotulo}</span>
+            <div className={`msg${meu ? ' me' : ''}`} key={it.id}>
+              <div className="msg-col">
+                <div className={`bub ${meu ? 'me' : 'them'}`} style={{ whiteSpace: 'pre-line' }}>
+                  {texto}
+                  <span className="meta">{hhmm(AGORA)}{meu && <IcTick azul />}</span>
+                </div>
+                {botoes && (
+                  <div className="qr-wrap">
+                    {botoes.map((b) => (
+                      <button className="qr-btn" key={b.t} onClick={b.fn}>{b.t}</button>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div></div>
+            </div>
           )
         })}
 
-        {daviFase === 'apresentando' && (
-          <div className="msg"><div className="msg-col" style={{ maxWidth: '72%' }}>
-            <div className="acts" style={{ marginTop: 6 }}>
-              <button className="act" onClick={lerConversas}>Pode ler</button>
-            </div>
+        {pensando && (
+          <div className="msg"><div className="msg-col">
+            <div className="bub them"><div className="typing"><i /><i /><i /></div></div>
           </div></div>
         )}
         <div ref={fim} />
       </div>
 
       <div className="composer">
+        <button className="icon-btn"><IcMais /></button>
         <button className="icon-btn"><IcEmoji /></button>
-        <div className="field"><textarea rows={1} placeholder="Fale com o Davi" /></div>
-        <button className="send"><IcMic /></button>
+        <div className="field">
+          <textarea rows={1} placeholder="Digite uma mensagem" value={rascunho}
+            onChange={(e) => setRascunho(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); mandar() } }} />
+        </div>
+        <button className={`send${rascunho ? ' on' : ''}`} onClick={mandar}>{rascunho ? <IcEnviar /> : <IcMic />}</button>
       </div>
     </>
   )
@@ -326,7 +331,7 @@ function ChatDavi() {
 /* -------------------------------------------------------------------- app */
 
 export default function App() {
-  const { fase, aberta, conversas, recuperado, toasts, rodando, daviNaoLidas } = useApp()
+  const { fase, aberta, conversas, toasts, daviNaoLidas } = useApp()
   const naoLidasTotal = conversas.reduce((s, c) => s + c.naoLidas, 0) + daviNaoLidas
   if (fase !== 'app') return <QR />
 
@@ -341,40 +346,35 @@ export default function App() {
         </button>
         <button className="rail-btn"><IcLigacao /></button>
         <button className="rail-btn"><IcStatus /></button>
+        <button className="rail-btn"><IcCanal /></button>
         <button className="rail-btn"><IcComunidade /></button>
         <div className="rail-sep" />
         <button className="rail-btn" style={{ position: 'relative' }}>
           <IcCatalogo />
-          <span style={{ position: 'absolute', top: 9, right: 9, width: 8, height: 8, borderRadius: 4, background: '#00d18f' }} />
+          <span style={{ position: 'absolute', top: 9, right: 9, width: 8, height: 8, borderRadius: 4, background: '#21C063' }} />
         </button>
         <button className="rail-btn"><IcTransmissao /></button>
         <div style={{ flex: 1 }} />
         <button className="rail-btn"><IcMidia /></button>
         <button className="rail-btn"><IcConfig /></button>
-        <div className="av" style={{ width: 34, height: 34, fontSize: 13, background: '#3b4a54', color: '#cfd9de', marginTop: 6 }}>SL</div>
+        <div className="av" style={{ width: 34, height: 34, fontSize: 13, background: '#3A3C3C', color: '#FAFAFA', marginTop: 6 }}>SL</div>
       </div>
 
       <Lateral />
 
       <div className="main">
-        {rodando && (
-          <div className="davibar">
-            <i />
-            <b>{brl(recuperado)}</b>
-            <span>recuperados hoje · Davi cuidando de {N_OPORTUNIDADES} clientes</span>
-          </div>
-        )}
-        {aberta === 'davi' ? <ChatDavi /> : c ? <Conversa_ c={c} /> : (
+                {aberta === 'davi' ? <ChatDavi /> : c ? <Conversa_ c={c} /> : (
           <div className="empty">
             <svg width="290" height="190" viewBox="0 0 290 190" fill="none">
-              <rect x="58" y="52" width="150" height="104" rx="14" fill="#1c3a30" />
-              <rect x="80" y="78" width="76" height="52" rx="7" fill="#2f8f6b" />
-              <path d="M80 100h76M106 78v52M131 78v52" stroke="#1c3a30" strokeWidth="3" />
-              <circle cx="86" cy="42" r="17" fill="#233b45" />
-              <path d="M69 42h34M86 25v34M74 31c7 7 17 7 24 0M74 53c7-7 17-7 24 0" stroke="#4a6572" strokeWidth="1.6" />
-              <path d="M196 92l26-32M222 60h-17M222 60v17" stroke="#25d366" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M196 148c14 0 20-9 22-18" stroke="#25d366" strokeWidth="5" strokeLinecap="round" />
-              <path d="M52 136l-14 12 20 4z" fill="#e9edef" />
+              <rect x="62" y="54" width="152" height="102" rx="16" fill="#dff5d8" />
+              <rect x="92" y="80" width="66" height="50" rx="7" fill="#a3d977" />
+              <path d="M92 105h66M114 80v50M136 80v50" stroke="#dff5d8" strokeWidth="3.4" />
+              <circle cx="82" cy="44" r="19" fill="#f2f6f8" />
+              <path d="M63 44h38M82 25v38M69 32c8 8 18 8 26 0M69 56c8-8 18-8 26 0" stroke="#c2ced6" strokeWidth="1.5" />
+              <path d="M198 96l24-34M222 62h-18M222 62v18" stroke="#3ec26a" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M186 148c16-2 22-12 24-22" stroke="#0fb87f" strokeWidth="0" />
+              <path d="M188 128c6-8 20-5 20 5s-14 15-20 20c-6-5-20-10-20-20s14-13 20-5z" fill="#12d39a" />
+              <path d="M54 132l-16 14 23 4z" fill="#f2f6f8" />
             </svg>
             <h2>Davi no seu WhatsApp Business</h2>
             <p>Fale com o Davi na conversa fixada no topo. Ele lê tudo que ficou parado e te diz quanto tem de dinheiro esquecido aqui dentro.</p>
@@ -386,7 +386,7 @@ export default function App() {
       <div className="toasts">
         {toasts.map((t) => (
           <div className="toast" key={t.id}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00d18f" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5L20 6.5" /></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#21C063" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12.5l5 5L20 6.5" /></svg>
             <b>+ {brl(t.valor)}</b><span>{t.rotulo}</span>
           </div>
         ))}
