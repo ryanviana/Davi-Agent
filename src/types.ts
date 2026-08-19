@@ -8,6 +8,11 @@ export type Motivo =
 
 export type Autor = 'cliente' | 'loja' | 'davi'
 
+export type Angulo =
+  | 'lembrete_simples' | 'facilita_pagamento' | 'retomada_pacote'
+  | 'prova_social' | 'escassez' | 'desconto'
+
+
 export interface Mensagem {
   id: string
   autor: Autor
