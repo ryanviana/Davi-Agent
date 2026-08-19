@@ -24,19 +24,13 @@ export default function QR() {
     return () => clearTimeout(t)
   }, [codigo])
 
-  // Pareamento. Três gatilhos independentes de propósito: no palco isto NÃO pode falhar.
-  // 1) qualquer tecla  2) qualquer toque/clique  3) onPointerDown no próprio nó (abaixo)
+  // Pareamento: SÓ a tecla Q. Nada de clique — no palco você aponta o celular pro
+  // QR e aperta Q; nenhum clique acidental na tela pode disparar a conexão antes.
   useEffect(() => {
     if (fase !== 'qr') return
-    const go = () => conectar()
-    window.addEventListener('keydown', go, true)
-    window.addEventListener('pointerdown', go, true)
-    document.addEventListener('pointerdown', go, true)
-    return () => {
-      window.removeEventListener('keydown', go, true)
-      window.removeEventListener('pointerdown', go, true)
-      document.removeEventListener('pointerdown', go, true)
-    }
+    const go = (e: KeyboardEvent) => { if (e.key === 'q' || e.key === 'Q') conectar() }
+    window.addEventListener('keydown', go)
+    return () => window.removeEventListener('keydown', go)
   }, [fase, conectar])
 
   if (fase === 'conectando') {
@@ -53,7 +47,7 @@ export default function QR() {
   }
 
   return (
-    <div onPointerDown={() => conectar()} style={{ height: '100%', overflowY: 'auto', background: '#161717', cursor: 'pointer' }}>
+    <div style={{ height: '100%', overflowY: 'auto', background: '#161717' }}>
       <div style={{ maxWidth: 1050, margin: '0 auto', padding: '38px 30px 60px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, marginBottom: 34 }}>
           <div className="av davi" style={{ width: 34, height: 34 }}><IcDavi size={17} /></div>

@@ -4,12 +4,16 @@ import './landing.css'
 import { TOTAL_PARADO, N_OPORTUNIDADES } from './store'
 
 /**
- * Landing pública (rota /). Vitrine: o jurado entende em dez segundos e clica
- * pra ver rodando. Os números vêm do store, não de constante escrita à mão —
- * se o seed mudar, a landing muda junto e nunca mente sobre a demo.
+ * Landing pública (rota /). A copy fala com o DONO do pequeno negócio, não com
+ * jurado: nada de máquina de estados, modelo ou eval. Só o dinheiro que está
+ * parado, quem vai atrás dele e por que o cliente não vai se incomodar.
+ * Os números saem do store — se o seed mudar, a landing muda junto.
  */
 
 const brl = (n: number) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 })
+
+/** Recuperando só 1 em cada 5 compromissos parados. Piso deliberado, não promessa. */
+const RECUPERA_20 = Math.round(TOTAL_PARADO * 0.2)
 
 /* ------------------------------------------------------------------ ícones */
 
@@ -69,8 +73,6 @@ function QrDoApp() {
   return <canvas ref={canvas} aria-label="QR code que abre o Davi" />
 }
 
-/* -------------------------------------------------------------- rótulo de seção */
-
 const Rotulo = ({ n, texto }: { n: string; texto: string }) => (
   <div className="lp-rot">
     <b className="mono">{n}</b>
@@ -98,9 +100,9 @@ export default function Landing() {
             <span className="lp-ponto" />
           </div>
           <div className="lp-nav-links">
-            <a href="#problema">O problema</a>
-            <a href="#cena">A cena</a>
-            <a href="#motor">O motor</a>
+            <a href="#parado">O que está parado</a>
+            <a href="#cena">Como funciona</a>
+            <a href="#conta">Quanto vale</a>
             <a className="lp-btn sm" href="/app">Ver rodando <Seta s={15} /></a>
           </div>
         </nav>
@@ -109,17 +111,18 @@ export default function Landing() {
         <section className="lp-hero">
           <div className="lp-hero-txt">
             <h1 className="serif lp-h1">
-              A inteligência de vendas das grandes, na mão do <span className="lp-grifo">pequeno negócio</span>.
+              Tem dinheiro parado no seu <span className="lp-grifo">WhatsApp</span>.
             </h1>
             <p className="lp-sub">
-              O Davi lê as conversas que já existem no seu WhatsApp, acha o dinheiro que parou no meio do caminho e vai atrás. No seu tom. Sem você digitar nada.
+              Orçamento que ninguém respondeu. Pacote pago pela metade. O "depois eu te falo" que nunca voltou.
+              O Davi acha tudo isso sozinho, fala com o cliente no seu jeito de falar e traz a venda de volta.
             </p>
             <div className="lp-cta-linha">
               <a className="lp-btn" href="/app">Ver o Davi rodando <Seta /></a>
               <a className="lp-link-sub" href="#cena">Ver uma venda voltar</a>
             </div>
             <div className="lp-selo mono">
-              <span>OpenAI Hackathon Brasil</span><i /><span>roda em gpt-5-mini</span>
+              <span>Você não instala nada</span><i /><span>não preenche nada</span><i /><span>nada muda na sua rotina</span>
             </div>
           </div>
 
@@ -128,21 +131,21 @@ export default function Landing() {
               <div className="lp-av-davi"><Faisca /></div>
               <div className="lp-app-head-txt">
                 <span className="lp-app-nome">Davi</span>
-                <span className="lp-app-sub">lendo 1.412 mensagens · 24 conversas</span>
+                <span className="lp-app-sub">leu suas conversas · 24 clientes</span>
               </div>
               <div className="lp-tag"><i />trabalhando</div>
             </div>
             <div className="lp-app-corpo">
-              <div className="lp-bub them">Terminei de ler. Achei dinheiro parado que ninguém tocou.</div>
+              <div className="lp-bub them">Terminei de ler tudo. Achei dinheiro parado que ninguém foi atrás.</div>
 
               <div className="lp-cartao">
                 <div className="lp-cartao-rot">Parado agora</div>
                 <div className="lp-cartao-val">{brl(TOTAL_PARADO)}</div>
-                <div className="lp-cartao-sub">em {N_OPORTUNIDADES} compromissos abertos</div>
-                <div className="lp-item"><span>Pacote parado na 6ª de 10 sessões</span><span>R$ 420</span></div>
+                <div className="lp-cartao-sub">em {N_OPORTUNIDADES} clientes esperando resposta</div>
+                <div className="lp-item"><span>Pacote pago, parou na 6ª de 10 sessões</span><span>R$ 420</span></div>
                 <div className="lp-item"><span>Orçamento sem resposta há 9 dias</span><span>R$ 1.050</span></div>
                 <div className="lp-item"><span>Pix prometido que nunca caiu</span><span>R$ 980</span></div>
-                <div className="lp-item mudo"><span>+ {N_OPORTUNIDADES - 3} compromissos</span></div>
+                <div className="lp-item mudo"><span>+ {N_OPORTUNIDADES - 3} clientes</span></div>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -150,18 +153,18 @@ export default function Landing() {
                 <div className="lp-qrbtn">Quero aprovar um por um</div>
               </div>
 
-              <div className="lp-app-nota">Nenhum dado foi digitado. Tudo saiu das conversas que já estavam lá.</div>
+              <div className="lp-app-nota">Você não digitou nada. Tudo isso já estava nas suas conversas.</div>
             </div>
           </div>
         </section>
 
-        {/* ---------------------------------------------------- 01 problema */}
-        <section className="lp-sec" id="problema">
-          <Rotulo n="01" texto="O problema" />
+        {/* ------------------------------------------- 01 o que está parado */}
+        <section className="lp-sec" id="parado">
+          <Rotulo n="01" texto="O que está parado" />
           <div className="lp-2col">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
               <h2 className="serif lp-h2">
-                As vendas não se perdem pro concorrente. Se perdem no <em style={{ fontStyle: 'italic' }}>silêncio</em>.
+                Você não perde venda pro concorrente. Perde no <em style={{ fontStyle: 'italic' }}>silêncio</em>.
               </h2>
 
               <svg className="lp-timeline" width="620" height="64" viewBox="0 0 620 64" fill="none">
@@ -177,7 +180,8 @@ export default function Landing() {
               </svg>
 
               <p className="lp-p" style={{ maxWidth: 560 }}>
-                Empresa grande vende mais porque tem inteligência: dado organizado, processo de follow-up, vendedor treinado. O pequeno negócio tem o dado espalhado em três celulares e o processo na memória do dono.
+                Não é falta de cliente. É que o dia acaba, chega gente nova no WhatsApp, e quem
+                pediu orçamento na terça desce na lista. Ninguém volta. E ninguém lembra que não voltou.
               </p>
             </div>
 
@@ -189,13 +193,13 @@ export default function Landing() {
               </div>
               <div className="lp-stat">
                 <b className="serif" style={{ color: '#A15A08' }}>20 a 40%</b>
-                <span>das oportunidades morrem por falta de resposta</span>
+                <span>das vendas se perdem só por falta de resposta</span>
                 <small className="mono">DATACRAZY</small>
               </div>
               <div className="lp-stat">
                 <b className="serif">{brl(TOTAL_PARADO)}</b>
-                <span>parados em {N_OPORTUNIDADES} compromissos, num único salão de bairro</span>
-                <small className="mono">MEDIDO PELO DAVI EM 30 SEGUNDOS</small>
+                <span>foi o que o Davi achou parado num salão de bairro, em trinta segundos</span>
+                <small className="mono">{N_OPORTUNIDADES} CLIENTES ESPERANDO RESPOSTA</small>
               </div>
             </div>
           </div>
@@ -206,38 +210,38 @@ export default function Landing() {
       <section className="lp-banda">
         <div className="lp-wrap">
           <Rotulo n="02" texto="O que ele faz" />
-          <h2 className="serif lp-h2" style={{ maxWidth: 820, marginBottom: 56 }}>
-            Um vendedor que já leu tudo, nunca esquece e sabe a hora de parar.
+          <h2 className="serif lp-h2" style={{ maxWidth: 760, marginBottom: 48 }}>
+            É um vendedor que já leu tudo, nunca esquece e sabe a hora de parar.
           </h2>
           <div className="lp-cards">
             <div className="lp-card">
               <IcBalao />
-              <h3>Lê o histórico inteiro</h3>
-              <p>Todas as conversas, inclusive áudio com gíria. Extrai valor, estado e o motivo de ter travado — campo a campo, com um nível de confiança em cada um.</p>
+              <h3>Lê tudo que já rolou</h3>
+              <p>Todas as suas conversas, do começo. Inclusive áudio, e inclusive aquele cliente de sete meses atrás. Você não precisa contar nada pra ele.</p>
             </div>
             <div className="lp-card">
               <IcLupa />
-              <h3>Acha o que parou</h3>
-              <p>Orçamento sem resposta, pacote pago e não usado, "vou pensar" vencido, Pix prometido que nunca caiu. Cada um vira um compromisso com valor e prazo.</p>
+              <h3>Acha o que ficou pra trás</h3>
+              <p>Orçamento sem resposta, pacote pago e não usado, "vou pensar" que venceu, Pix prometido que nunca caiu. Com nome, valor e há quanto tempo parou.</p>
             </div>
             <div className="lp-card">
               <IcAviao />
-              <h3>Volta no seu tom</h3>
-              <p>Escreve como você escreve, aprendido das suas próprias respostas. E escolhe o ângulo que converte na sua operação — não o que converte "em média".</p>
+              <h3>Fala no seu jeito</h3>
+              <p>Ele aprende a escrever lendo as suas próprias respostas. O cliente recebe uma mensagem sua, não um robô se apresentando.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------- 03 a cena */}
+      {/* -------------------------------------------------- 03 como funciona */}
       <div className="lp-wrap">
         <section className="lp-sec" id="cena">
-          <Rotulo n="03" texto="A cena" />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, paddingBottom: 52 }}>
-            <h2 className="serif lp-h2" style={{ maxWidth: 900 }}>
+          <Rotulo n="03" texto="Como funciona na prática" />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, paddingBottom: 48 }}>
+            <h2 className="serif lp-h2" style={{ maxWidth: 820 }}>
               A Fernanda sumiu há quatro meses com quatro sessões pagas.
             </h2>
-            <p className="lp-p">Ninguém no salão lembrava. O Davi lembrou em trinta segundos.</p>
+            <p className="lp-p">Ninguém no salão lembrava disso. O Davi lembrou — e trouxe ela de volta no mesmo dia.</p>
           </div>
 
           <div className="lp-2col inverso">
@@ -259,51 +263,42 @@ export default function Landing() {
 
                 <div className="lp-bub them">sumi né kkkk ainda tenho sessão sobrando?</div>
                 <div className="lp-bub me" style={{ marginTop: 14 }}>Fernanda!! Tem sim, sobraram 4 sessões do seu laser, e elas não vencem 😊 Reservo pra vc essa semana?</div>
-                <div className="lp-bub-nota">escrito pelo Davi · aprovado por você</div>
+                <div className="lp-bub-nota">escrito pelo Davi · enviado depois que você aprovou</div>
                 <div className="lp-bub them" style={{ marginTop: 14 }}>quero sim!</div>
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 34 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div className="mono" style={{ fontSize: 12, color: '#9A8E82', letterSpacing: '.08em', textTransform: 'uppercase' }}>
-                  O que ele extraiu da conversa
+                  O que o Davi entendeu sozinho
                 </div>
                 <div className="lp-campos">
-                  <div className="lp-campo"><b className="mono">valor</b><span>R$ 420 <em>— 4 de 10 sessões restantes, já pagas</em></span></div>
-                  <div className="lp-campo"><b className="mono">estado</b><span>travado</span></div>
-                  <div className="lp-campo"><b className="mono">motivo</b><span>pacote parado <em>— não é preço, é esquecimento</em></span></div>
-                  <div className="lp-campo"><b className="mono">temperatura</b><span style={{ color: '#A15A08' }}>quente <em>— ela mesma reabriu a conversa hoje</em></span></div>
-                  <div className="lp-campo">
-                    <b className="mono">confiança</b>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-                      <span style={{ fontVariantNumeric: 'tabular-nums' }}>0,92</span>
-                      <span className="lp-barra"><i style={{ width: '92%' }} /></span>
-                      <em>acima do limiar, pode agir</em>
-                    </span>
-                  </div>
+                  <div className="lp-campo"><b className="mono">o que ela tem</b><span>4 de 10 sessões de laser, <em>já pagas — R$ 420 do bolso dela</em></span></div>
+                  <div className="lp-campo"><b className="mono">por que parou</b><span>esquecimento, <em>não foi preço e não foi briga</em></span></div>
+                  <div className="lp-campo"><b className="mono">está quente?</b><span style={{ color: '#A15A08' }}>muito <em>— ela mesma reabriu a conversa hoje</em></span></div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div className="mono" style={{ fontSize: 12, color: '#9A8E82', letterSpacing: '.08em', textTransform: 'uppercase' }}>
-                  As três decisões que um bom vendedor toma
+                  E aí decidiu como um bom vendedor
                 </div>
                 <div className="lp-decisoes">
                   <div className="lp-decisao">
-                    <b className="mono">QUANDO</b>
+                    <b className="mono">QUANDO FALAR</b>
                     <strong>Hoje</strong>
-                    <span>Ela reabriu a conversa há 42 minutos. A janela é agora.</span>
+                    <span>Ela mandou mensagem há 42 minutos. É agora ou esfria de novo.</span>
                   </div>
                   <div className="lp-decisao">
-                    <b className="mono">ÂNGULO</b>
-                    <strong>Retomada de pacote</strong>
-                    <span>Não desconto. Nesta operação, retomada converte mais em pacote parado.</span>
+                    <b className="mono">O QUE FALAR</b>
+                    <strong>Que as sessões não vencem</strong>
+                    <span>Não precisou dar desconto. O que trava ela é achar que perdeu o que pagou.</span>
                   </div>
                   <div className="lp-decisao parar">
-                    <b className="mono">ONDE PARAR</b>
-                    <strong>No 3º toque</strong>
-                    <span>Sem resposta até lá, pausa 30 dias. Depois disso é só queimar a cliente.</span>
+                    <b className="mono">QUANDO PARAR</b>
+                    <strong>No 3º lembrete</strong>
+                    <span>Se não responder até lá, ele para e só volta daqui um mês.</span>
                   </div>
                 </div>
               </div>
@@ -318,40 +313,43 @@ export default function Landing() {
         </section>
       </div>
 
-      {/* --------------------------------------------------- 04 saber parar */}
+      {/* -------------------------------------- 04 ele não queima o cliente */}
       <section className="lp-banda">
         <div className="lp-wrap">
-          <Rotulo n="04" texto="O que ele se recusa a fazer" />
+          <Rotulo n="04" texto="Seu cliente não vai se incomodar" />
           <div className="lp-2col">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-              <h2 className="serif lp-h2">Saber parar também é o produto.</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <h2 className="serif lp-h2">Saber a hora de parar também é o trabalho dele.</h2>
               <p className="lp-p" style={{ maxWidth: 520 }}>
-                Um falso positivo não custa uma mensagem. Custa uma cliente. Por isso a decisão de enviar não é do modelo: é de código, com regra dura por cima.
+                O seu medo é justo: uma mensagem errada não custa uma mensagem, custa uma cliente.
+                Por isso ele tem freio — e o freio não é opinião dele, é regra.
               </p>
               <div className="lp-guardas">
-                <div className="lp-guarda"><b className="mono">BLOQUEIA</b><span>preço que a loja nunca falou</span></div>
-                <div className="lp-guarda"><b className="mono">BLOQUEIA</b><span>promessa que a agenda não sustenta</span></div>
-                <div className="lp-guarda"><b className="mono">BLOQUEIA</b><span>dia da semana que não existe naquela data</span></div>
-                <div className="lp-guarda"><b className="mono">SEGURA</b><span>confiança abaixo do limiar vai pra revisão, não pra ação</span></div>
+                <div className="lp-guarda"><b className="mono">NUNCA</b><span>inventa um preço que você não falou</span></div>
+                <div className="lp-guarda"><b className="mono">NUNCA</b><span>promete um horário que a sua agenda não tem</span></div>
+                <div className="lp-guarda"><b className="mono">NUNCA</b><span>insiste depois do terceiro lembrete sem resposta</span></div>
+                <div className="lp-guarda"><b className="mono">NUNCA</b><span>manda nada em dúvida — nesse caso ele te pergunta antes</span></div>
               </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div className="lp-recusa">
-                <div className="lp-recusa-tit"><Xis /><span>Não enviar — Priscila</span></div>
+                <div className="lp-recusa-tit"><Xis /><span>Aqui ele se recusou a mandar</span></div>
                 <p className="lp-p" style={{ fontSize: 16 }}>
-                  Três toques sem uma única resposta. O quarto toque converte 2% no histórico desta operação e queima a cliente pro resto do ano.
+                  A Priscila já levou três lembretes e não respondeu nenhum. Um quarto quase nunca traz
+                  resposta — traz bloqueio. O Davi parou sozinho e avisou você.
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
                   <span className="lp-pill mono">PAUSADO POR 30 DIAS</span>
-                  <span className="mono" style={{ fontSize: 12, color: '#9A8E82' }}>R$ 980 · sumiço pós-acordo</span>
+                  <span className="mono" style={{ fontSize: 12, color: '#9A8E82' }}>R$ 980 · sumiu depois de fechar</span>
                 </div>
               </div>
 
               <div className="lp-nota">
-                <span className="mono" style={{ fontSize: 12, color: '#9A8E82', letterSpacing: '.06em' }}>POR QUE 3 E NÃO 5</span>
+                <span className="mono" style={{ fontSize: 12, color: '#9A8E82', letterSpacing: '.06em' }}>QUEM MANDA É VOCÊ</span>
                 <p className="lp-p" style={{ fontSize: 16 }}>
-                  Ninguém escreveu "3" no código como palpite. Sai da conta sobre <strong style={{ color: '#17130F', fontWeight: 600 }}>169 toques já resolvidos</strong> desta loja: a chance de resposta cai a cada toque, e depois do terceiro não paga o risco.
+                  Nada sai sem a sua autorização. Você pode soltar tudo de uma vez, aprovar
+                  mensagem por mensagem, ou dizer <strong style={{ color: '#17130F', fontWeight: 600 }}>"para com a Bruna"</strong> — e ele para.
                 </p>
               </div>
             </div>
@@ -359,46 +357,23 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------- 05 o motor */}
-      <section className="lp-banda-dark" id="motor">
+      {/* ------------------------------------------------------ 05 a conta */}
+      <section className="lp-banda-dark" id="conta">
         <div className="lp-wrap">
-          <Rotulo n="05" texto="O motor" />
-          <div className="lp-2col inverso">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-              <h2 className="serif lp-h2">Chatbot fala quando o cliente escreve. O Davi age quando ele para.</h2>
-              <p className="lp-p">
-                O gatilho não é uma mensagem chegando — é uma promessa vencendo. Por baixo há uma máquina de estados por compromisso e uma política determinística de ação. O modelo extrai e redige; quem decide se pode enviar é código.
+          <Rotulo n="05" texto="Quanto isso vale" />
+          <div className="lp-conta">
+            <div>
+              <div className="serif lp-conta-num">{brl(RECUPERA_20)}</div>
+              <p className="lp-conta-cap">
+                é o que volta pro caixa recuperando só 1 em cada 5 clientes parados —
+                a conta mais conservadora que a gente conseguiu fazer.
               </p>
-              <div className="lp-estados mono">
-                <span className="lp-estado">novo</span>
-                <span className="lp-seta">→</span>
-                <span className="lp-estado">orçado</span>
-                <span className="lp-seta">→</span>
-                <span className="lp-estado">acordado</span>
-                <span className="lp-seta">→</span>
-                <span className="lp-estado travado">travado</span>
-                <span className="lp-seta">→</span>
-                <span className="lp-estado recuperado">recuperado</span>
-              </div>
             </div>
-
-            <div className="lp-metricas">
-              <div className="lp-metrica">
-                <b className="serif">169</b>
-                <span>toques já resolvidos desta loja alimentam a curva de conversão. A régua de follow-up não é configurada — é medida.</span>
-              </div>
-              <div className="lp-metrica">
-                <b className="serif">20</b>
-                <span>conversas rotuladas à mão, campo a campo, para medir a extração contra um gabarito — não contra a nossa impressão.</span>
-              </div>
-              <div className="lp-metrica verde">
-                <b className="serif">0</b>
-                <span>preços inventados. É a métrica que otimizamos primeiro: o erro que faz o Davi cobrar quem não deve nada.</span>
-              </div>
-              <div className="lp-metrica amber">
-                <b className="serif">[X]%</b>
-                <span>de precisão na extração <span className="lp-falta">[PREENCHER APÓS RODAR O EVAL]</span>. gpt-5-mini, resposta em ~1,7s por conversa.</span>
-              </div>
+            <div>
+              <div className="lp-conta-linha"><b>Parado no WhatsApp desse salão</b><span>{brl(TOTAL_PARADO)}</span></div>
+              <div className="lp-conta-linha"><b>Clientes esperando resposta</b><span>{N_OPORTUNIDADES}</span></div>
+              <div className="lp-conta-linha"><b>Tempo que você gasta pra isso</b><span>zero</span></div>
+              <div className="lp-conta-linha"><b>O que você precisa preencher</b><span>nada</span></div>
             </div>
           </div>
         </div>
@@ -407,15 +382,19 @@ export default function Landing() {
       {/* ------------------------------------------------------ 06 começar */}
       <div className="lp-wrap">
         <section className="lp-sec">
-          <Rotulo n="06" texto="Começar" />
+          <Rotulo n="06" texto="Como começar" />
           <div className="lp-2col">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
-              <h2 className="serif lp-h2" style={{ maxWidth: 620 }}>O onboarding inteiro é um QR code.</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+              <h2 className="serif lp-h2" style={{ maxWidth: 560 }}>Você aponta a câmera e acabou.</h2>
               <div className="lp-trio">
                 <div className="lp-trio-item"><Check /><span>Nada para instalar.</span></div>
                 <div className="lp-trio-item"><Check /><span>Nada para preencher.</span></div>
-                <div className="lp-trio-item"><Check /><span>Nada muda na rotina.</span></div>
+                <div className="lp-trio-item"><Check /><span>Nada muda na sua rotina.</span></div>
               </div>
+              <p className="lp-p" style={{ maxWidth: 520 }}>
+                O Davi entra no WhatsApp que você já usa, do jeito que você já usa. Em quarenta
+                segundos ele te diz quanto tem parado aí dentro.
+              </p>
               <a className="lp-btn" href="/app" style={{ alignSelf: 'flex-start' }}>Abrir o Davi <Seta /></a>
             </div>
 
@@ -435,10 +414,9 @@ export default function Landing() {
           <div className="lp-fecho-linha">
             <div className="lp-fecho-botoes">
               <a className="lp-btn" href="/app">Ver o Davi rodando <Seta /></a>
-              <a className="lp-btn ghost" href="[LINK DO REPOSITÓRIO]">Repositório</a>
-              <a className="lp-btn ghost" href="[LINK DO VÍDEO]">Vídeo da demo</a>
+              <a className="lp-btn ghost" href="[LINK DO VÍDEO]">Ver o vídeo de 1 minuto</a>
             </div>
-            <p>CRM é um formulário que ninguém preenche. O Davi lê a conversa que já existe e vende com ela.</p>
+            <p>Você não precisa de um sistema novo pra preencher. O dinheiro já está nas suas conversas.</p>
           </div>
         </section>
 
