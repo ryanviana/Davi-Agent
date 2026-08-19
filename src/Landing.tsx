@@ -122,7 +122,7 @@ export default function Landing() {
               <a className="lp-link-sub" href="#cena">Ver uma venda voltar</a>
             </div>
             <div className="lp-selo mono">
-              <span>Você não instala nada</span><i /><span>não preenche nada</span><i /><span>nada muda na sua rotina</span>
+              <span>Funciona no WhatsApp que você já usa</span><i /><span>sem instalar nada</span>
             </div>
           </div>
 
