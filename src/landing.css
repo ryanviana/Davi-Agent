@@ -5,16 +5,16 @@
  */
 
 html:has(body.landing-mode) { height: auto; }
-body.landing-mode { height: auto; overflow: auto; background: var(--paper); }
+body.landing-mode { height: auto; overflow-x: hidden; overflow-y: auto; background: var(--paper); }
 body.landing-mode #root { height: auto; }
 
-.lp {
+.lp { position: relative; overflow-x: clip;
   --paper:  #FBF8F3;
   --paper2: #F3EDE3;
   --ink:    #17130F;
   --ink2:   #6E635A;
-  --ink3:   #9A8E82;
-  --rule:   #E3D9CB;
+  --ink3:   #7C7266;
+  --rule:   #E2D7C6;
   --amber:  #F0A63C;
   --amber2: #A15A08;
   --verde:  #0E7C48;
@@ -29,6 +29,13 @@ body.landing-mode #root { height: auto; }
   -webkit-font-smoothing: antialiased;
 }
 
+.lp::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: var(--amber); z-index: 2;
+}
+.lp ::selection { background: rgba(240,166,60,.28); }
+.lp [id] { scroll-margin-top: 32px; }
+
 .lp .serif { font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif; font-weight: 400; }
 .lp .mono  { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
 
@@ -42,7 +49,7 @@ body.landing-mode #root { height: auto; }
 /* ---------------------------------------------------------------- nav */
 .lp-nav {
   display: flex; align-items: center; justify-content: space-between;
-  padding-top: 28px;
+  gap: 24px; padding: 26px 0 0;
 }
 .lp-marca { display: flex; align-items: baseline; gap: 8px; }
 .lp-marca span:first-child { font-size: 34px; letter-spacing: -.015em; }
@@ -64,11 +71,11 @@ body.landing-mode #root { height: auto; }
 
 /* ---------------------------------------------------------------- hero */
 .lp-hero {
-  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
-  gap: 72px; align-items: start; padding-top: 72px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+  gap: 64px; align-items: start; padding-top: 68px;
 }
 .lp-hero-txt { display: flex; flex-direction: column; gap: 28px; }
-.lp-h1 { font-size: clamp(40px, 4.1vw, 62px); line-height: 1.04; letter-spacing: -.022em; max-width: 15ch; }
+.lp-h1 { font-size: clamp(40px, 4.1vw, 60px); line-height: 1.04; letter-spacing: -.022em; max-width: 16ch; text-wrap: balance; }
 .lp-grifo {
   text-decoration: underline; text-decoration-color: var(--amber);
   text-decoration-thickness: .1em; text-underline-offset: .11em;
@@ -88,7 +95,7 @@ body.landing-mode #root { height: auto; }
 /* Pele real do app: mesmos tokens do index.css, pra o print ser o produto. */
 .lp-app {
   background: var(--dark); border-radius: 14px; overflow: hidden;
-  box-shadow: 0 40px 80px -40px rgba(23, 19, 15, .45);
+  box-shadow: 0 2px 4px rgba(23,19,15,.05), 0 24px 44px -24px rgba(23,19,15,.34), 0 60px 90px -60px rgba(23,19,15,.28);
   font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif;
 }
 .lp-app-head {
@@ -152,7 +159,7 @@ body.landing-mode #root { height: auto; }
 /* ------------------------------------------------------------- seções */
 .lp-sec { padding-top: 104px; }
 .lp-banda { margin-top: 104px; background: var(--paper2); padding: 72px 0 80px; }
-.lp-banda-dark { background: var(--dark); color: #FAFAFA; padding: 76px 0 84px; }
+.lp-banda-dark { background: var(--dark); color: #FAFAFA; padding: 76px 0 78px; }
 
 .lp-rot { display: flex; align-items: center; gap: 16px; padding-bottom: 36px; }
 .lp-rot b { font-size: 12.5px; color: var(--amber2); letter-spacing: .08em; font-weight: 400; }
@@ -162,18 +169,19 @@ body.landing-mode #root { height: auto; }
 .lp-banda-dark .lp-rot span { color: rgba(255,255,255,.45); }
 .lp-banda-dark .lp-rot i { background: rgba(255,255,255,.14); }
 
-.lp-h2 { font-size: clamp(30px, 3.1vw, 46px); line-height: 1.06; letter-spacing: -.02em; }
+.lp-h2 { font-size: clamp(30px, 3.1vw, 44px); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
 .lp-p  { font-size: 17px; line-height: 1.6; color: var(--ink2); text-wrap: pretty; }
 .lp-banda-dark .lp-p { color: rgba(255,255,255,.62); }
 
-.lp-2col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); gap: 80px; align-items: start; }
-.lp-2col.inverso { grid-template-columns: minmax(0, .86fr) minmax(0, 1fr); }
+.lp-2col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .84fr); gap: 64px; align-items: start; }
+.lp-2col.inverso { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); align-items: center; }
+
 
 /* estatísticas */
 .lp-stats { display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
 .lp-stat { display: flex; flex-direction: column; gap: 6px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
 .lp-stat:last-child { border-bottom: 0; }
-.lp-stat b { font-size: clamp(34px, 3.2vw, 46px); line-height: 1; letter-spacing: -.02em; font-weight: 400; }
+.lp-stat b { font-size: clamp(34px, 3.2vw, 46px); line-height: 1; letter-spacing: -.02em; font-weight: 400; font-variant-numeric: tabular-nums; }
 .lp-stat span { font-size: 15px; color: var(--ink2); }
 .lp-stat small { font-size: 11.5px; color: var(--ink3); letter-spacing: .05em; }
 
@@ -181,8 +189,10 @@ body.landing-mode #root { height: auto; }
 .lp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .lp-card {
   background: var(--paper); border: 1px solid var(--rule); border-radius: 4px;
-  padding: 32px 30px 34px; display: flex; flex-direction: column; gap: 16px;
+  padding: 30px 28px; display: flex; flex-direction: column; gap: 14px;
+  transition: border-color .18s ease, transform .18s ease;
 }
+.lp-card:hover { border-color: var(--ink3); transform: translateY(-2px); }
 .lp-card h3 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
 .lp-card p { font-size: 15.5px; line-height: 1.6; color: var(--ink2); }
 
@@ -245,7 +255,7 @@ body.landing-mode #root { height: auto; }
 .lp-metricas { display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,.16); }
 .lp-metrica { display: flex; align-items: flex-start; gap: 28px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
 .lp-metrica:last-child { border-bottom: 0; }
-.lp-metrica b { width: 130px; flex-shrink: 0; font-size: 42px; line-height: 1; letter-spacing: -.02em; font-weight: 400; }
+.lp-metrica b { width: 130px; flex-shrink: 0; font-variant-numeric: tabular-nums; font-size: 42px; line-height: 1; letter-spacing: -.02em; font-weight: 400; }
 .lp-metrica span { flex-grow: 1; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,.62); padding-top: 8px; }
 .lp-metrica.verde b { color: #21C063; }
 .lp-metrica.amber b { color: #f0a63c; }
@@ -282,7 +292,10 @@ body.landing-mode #root { height: auto; }
 }
 .lp-rodape-meta i { width: 4px; height: 4px; border-radius: 50%; background: var(--rule); display: block; }
 
-.lp-timeline { display: block; max-width: 100%; height: auto; }
+.lp-timeline { display: block; width: 100%; max-width: 620px; height: auto; }
+/* filhos de grid precisam poder encolher; sem isto o conteúdo define a largura */
+.lp-hero > *, .lp-2col > *, .lp-cards > *, .lp-decisoes > *, .lp-conta > * { min-width: 0; }
+.lp img, .lp svg, .lp canvas { max-width: 100%; }
 
 /* ------------------------------------------------------------- 1024px */
 @media (max-width: 1024px) {
@@ -302,7 +315,9 @@ body.landing-mode #root { height: auto; }
 /* -------------------------------------------------------------- 640px */
 @media (max-width: 640px) {
   .lp-wrap { padding: 0 22px; }
-  .lp-nav-links a:not(.lp-btn) { display: none; }
+  .lp .lp-nav-links a:not(.lp-btn) { display: none; }
+  .lp-selo { display: none; }
+  .lp-marca span:first-child { font-size: 28px; }
   .lp-sub { font-size: 17px; }
   .lp-p { font-size: 16.5px; }
   .lp-cta-linha { flex-direction: column; align-items: stretch; gap: 14px; }
@@ -329,7 +344,7 @@ body.landing-mode #root { height: auto; }
 
 /* ------------------------------------------------------------ a conta */
 .lp-conta { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
-.lp-conta-num { font-size: clamp(56px, 7vw, 104px); line-height: .95; letter-spacing: -.03em; color: #21C063; font-weight: 400; }
+.lp-conta-num { font-size: clamp(60px, 7.6vw, 116px); line-height: .95; letter-spacing: -.03em; color: #21C063; font-weight: 400; }
 .lp-conta-cap { font-size: 17px; color: rgba(255,255,255,.62); padding-top: 14px; max-width: 30ch; }
 .lp-conta-linha { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
 .lp-conta-linha:last-child { border-bottom: 0; }

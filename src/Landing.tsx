@@ -173,10 +173,10 @@ export default function Landing() {
                 <circle cx="118" cy="32" r="6" fill="#17130F" />
                 <circle cx="210" cy="32" r="6" fill="#17130F" />
                 <line x1="270" y1="32" x2="600" y2="32" stroke="#F0A63C" strokeWidth="1.5" strokeDasharray="2 12" strokeLinecap="round" />
-                <text x="0" y="58" fill="#6E635A" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">ORÇAMENTO</text>
-                <text x="96" y="58" fill="#6E635A" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">"VOU PENSAR"</text>
-                <text x="212" y="58" fill="#6E635A" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">"TE FALO"</text>
-                <text x="420" y="58" fill="#A15A08" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">NINGUÉM VOLTOU</text>
+                <text x="0" y="58" fill="#7C7266" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">ORÇAMENTO</text>
+                <text x="118" y="58" textAnchor="middle" fill="#7C7266" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">"VOU PENSAR"</text>
+                <text x="210" y="58" textAnchor="middle" fill="#7C7266" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">"TE FALO"</text>
+                <text x="435" y="58" textAnchor="middle" fill="#A15A08" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="0.06em">NINGUÉM VOLTOU</text>
               </svg>
 
               <p className="lp-p" style={{ maxWidth: 560 }}>
