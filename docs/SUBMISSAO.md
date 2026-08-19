@@ -4,6 +4,8 @@
 
 **Trilha:** Pequenos Negócios
 **Evento:** OpenAI Hackathon · Brasil — São Paulo, 19 de agosto de 2026
+**Demo ao vivo:** https://hackathon-open-ai.vercel.app
+**Repositório:** https://github.com/ryanviana/Davi-Agent
 
 ---
 
@@ -82,7 +84,7 @@ anterior está sendo apresentado como novo.
 ## Checklist antes de enviar
 
 - [ ] Repositório está **público**
-- [ ] Link da demo está acessível (`npm run build` → `dist/` estático)
+- [x] Link da demo está acessível — https://hackathon-open-ai.vercel.app
 - [ ] Vídeo de ~1 minuto gravado — roteiro em [DEMO.pt-BR.md](DEMO.pt-BR.md#roteiro-do-vídeo-de-1-minuto)
 - [ ] O vídeo identifica claramente o que a equipe construiu durante o evento
 - [ ] Todos os integrantes adicionados à página de submissão

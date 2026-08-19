@@ -6,6 +6,8 @@
 
 🇬🇧 **English** · [🇧🇷 Português](README.pt-BR.md)
 
+### ▶︎ [Try the live demo](https://hackathon-open-ai.vercel.app)
+
 _Built for the [OpenAI Hackathon · Brasil](https://cerebralvalley.ai/e/openai-hackathon-brasil) — track: **Pequenos Negócios** (Small Businesses)_
 
 </div>
@@ -174,12 +176,16 @@ rationale, live revenue notifications. You can run it and walk the entire produc
 
 ## Run it
 
+**Live: https://hackathon-open-ai.vercel.app** — nothing to install.
+
+Or locally:
+
 ```bash
 npm install
 npm run dev     # → http://localhost:5173
 ```
 
-Then: click or press any key on the QR screen to pair → click **"Pode ler"** in Davi's chat
+Either way: click or press any key on the QR screen to pair → click **"Pode ler"** in Davi's chat
 → watch the scan → click **"Pode buscar"** → the recovery run takes about 18 seconds.
 
 Notes for presenters:

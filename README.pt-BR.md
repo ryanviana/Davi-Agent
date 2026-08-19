@@ -6,6 +6,8 @@
 
 [🇬🇧 English](README.md) · 🇧🇷 **Português**
 
+### ▶︎ [Ver a demo ao vivo](https://hackathon-open-ai.vercel.app)
+
 _Feito para o [OpenAI Hackathon · Brasil](https://cerebralvalley.ai/e/openai-hackathon-brasil) — trilha: **Pequenos Negócios**_
 
 </div>
@@ -176,12 +178,16 @@ o produto inteiro.
 
 ## Como rodar
 
+**Ao vivo: https://hackathon-open-ai.vercel.app** — sem instalar nada.
+
+Ou localmente:
+
 ```bash
 npm install
 npm run dev     # → http://localhost:5173
 ```
 
-Depois: clique ou aperte qualquer tecla na tela do QR para parear → clique em **"Pode ler"** na
+De qualquer forma: clique ou aperte qualquer tecla na tela do QR para parear → clique em **"Pode ler"** na
 conversa do Davi → assista à varredura → clique em **"Pode buscar"** → a execução leva cerca de
 18 segundos.
 

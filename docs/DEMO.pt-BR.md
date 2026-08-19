@@ -2,7 +2,7 @@
 
 [🇬🇧 English](DEMO.md) · 🇧🇷 **Português**
 
-`npm install && npm run dev` → http://localhost:5173
+**Ao vivo: https://hackathon-open-ai.vercel.app** · ou localmente: `npm install && npm run dev` → http://localhost:5173
 
 **Duração total: ~3 minutos.** A execução roteirizada leva ~18 segundos depois da autorização.
 

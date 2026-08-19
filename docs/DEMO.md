@@ -2,7 +2,7 @@
 
 🇬🇧 **English** · [🇧🇷 Português](DEMO.pt-BR.md)
 
-`npm install && npm run dev` → http://localhost:5173
+**Live: https://hackathon-open-ai.vercel.app** · or locally: `npm install && npm run dev` → http://localhost:5173
 
 **Total runtime: ~3 minutes.** The scripted recovery run takes ~18 seconds once authorized.
 
