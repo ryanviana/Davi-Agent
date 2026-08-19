@@ -97,6 +97,31 @@ export const CONVERSAS: Conversa[] = [
     }
   },
   {
+    id: 'renata',
+    nome: 'Renata Aguiar',
+    iniciais: 'RA',
+    cor: '#b8d8c0',
+    naoLidas: 1,
+    mensagens: [
+      { id: 'renata-1', autor: 'cliente', texto: 'oi! eu tinha marcado limpeza + hidratacao pra quinta, consigo passar pra outro dia?', min: 13_000 },
+      { id: 'renata-2', autor: 'loja', texto: 'Oi Renata! Consigo sim, me fala qual dia fica melhor 😊', min: 12_940 },
+      { id: 'renata-3', autor: 'cliente', texto: 'deixa eu ver como fica minha semana e ja te falo', min: 12_900 },
+      { id: 'renata-4', autor: 'cliente', texto: 'ainda da tempo de remarcar?', min: 9_400 }
+    ],
+    compromisso: {
+      itens: [
+        { descricao: 'Limpeza de pele profunda', valor: 140 },
+        { descricao: 'Hidratacao facial', valor: 140 }
+      ],
+      valorTotal: 280,
+      estado: 'travado',
+      motivo: 'sumico_pos_acordo',
+      temperatura: 'quente',
+      confianca: 0.78,
+      toques: [{ min: 7200, angulo: 'lembrete_simples', respondeu: false }]
+    }
+  },
+  {
     id: 'carol',
     nome: 'Carolina Bittencourt',
     iniciais: 'CB',
@@ -194,7 +219,8 @@ export const CONVERSAS: Conversa[] = [
       confianca: 0.42,
       toques: [
         { min: 43200, angulo: 'retomada_pacote', respondeu: false },
-        { min: 20160, angulo: 'escassez', respondeu: false }
+        { min: 20160, angulo: 'escassez', respondeu: false },
+        { min: 2880, angulo: 'escassez', respondeu: false }
       ]
     }
   },

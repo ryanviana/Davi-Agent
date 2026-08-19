@@ -1,0 +1,171 @@
+{
+  "versao": 1,
+  "criterio": [
+    "Rotulado a mao lendo o dialogo de cada conversa, nao copiando o campo compromisso do seed.",
+    "valorTotal = o dinheiro que esta na mesa hoje. Houve negociacao? vale o ultimo valor que a LOJA colocou, nao o de tabela. Pacote parado? sessoes restantes x preco por sessao da tabela. Nada concreto fechado? null.",
+    "estado: novo = so pergunta operacional, nenhum servico definido; orcado = a loja passou preco e a cliente nao se comprometeu nem objetou; acordado = fechou e nao ha promessa vencida; travado = houve compromisso concreto e a conversa parou numa objecao ou numa promessa nao cumprida.",
+    "acordo + promessa de pix/confirmacao vencida ha mais de 3 dias = travado com motivo sumico_pos_acordo.",
+    "motivo so existe quando estado = travado; nos outros estados e null.",
+    "temperatura mede a proximidade de virar dinheiro: quente = sinal claro nos ultimos ~3 dias; morno = interesse real porem parado ate ~2 semanas; frio = silencio longo, objecao financeira dura, ou pergunta puramente operacional.",
+    "Onde o rotulo discorda do seed a linha traz uma nota explicando o porque."
+  ],
+  "rotulos": [
+    {
+      "id": "aline",
+      "valorTotal": 980,
+      "estado": "travado",
+      "motivo": "preco",
+      "temperatura": "morno",
+      "nota": "Negociacao de preco: 1.050 de tabela, ela pediu 900, a loja fechou 980 no pix e ela sumiu ha ~8 dias. O seed guarda 1.050; rotulei 980, que e o valor de fato na mesa."
+    },
+    {
+      "id": "tati",
+      "valorTotal": 1050,
+      "estado": "travado",
+      "motivo": "terceiro",
+      "temperatura": "quente"
+    },
+    {
+      "id": "bruna",
+      "valorTotal": 650,
+      "estado": "travado",
+      "motivo": "preco",
+      "temperatura": "frio",
+      "nota": "Objecao de orcamento respondida com parcelamento em 4x, sem contraproposta de valor: o compromisso continua valendo 650."
+    },
+    {
+      "id": "juliana",
+      "valorTotal": 392,
+      "estado": "travado",
+      "motivo": "pacote_parado",
+      "temperatura": "frio",
+      "nota": "Valor implicito: 4 sessoes de massagem restantes, preco nunca citado no dialogo, 392 sai de 980/10 da tabela. Seed diz morno; 30 dias de silencio depois de 'semana que vem eu marco' e frio."
+    },
+    {
+      "id": "carol",
+      "valorTotal": 140,
+      "estado": "acordado",
+      "motivo": null,
+      "temperatura": "quente",
+      "nota": "O seed nao tem compromisso nenhum aqui, mas o dialogo fecha limpeza de pele por 140 com dia e hora e um 'fechado!' da cliente."
+    },
+    {
+      "id": "patricia",
+      "valorTotal": 280,
+      "estado": "orcado",
+      "motivo": null,
+      "temperatura": "morno"
+    },
+    {
+      "id": "camila",
+      "valorTotal": 190,
+      "estado": "travado",
+      "motivo": "sumico_pos_acordo",
+      "temperatura": "morno",
+      "nota": "Seed diz acordado sem motivo. Ela confirmou o dia, prometeu o pix e sumiu ha quase 7 dias: acordo que nao anda e travado."
+    },
+    {
+      "id": "larissa",
+      "valorTotal": 525,
+      "estado": "travado",
+      "motivo": "pacote_parado",
+      "temperatura": "frio",
+      "nota": "Audio de 47s. Valor implicito: 5 sessoes de laser guardadas x 105 (1.050/10)."
+    },
+    {
+      "id": "priscila",
+      "valorTotal": 980,
+      "estado": "travado",
+      "motivo": "sumico_pos_acordo",
+      "temperatura": "morno",
+      "nota": "Seed diz acordado/quente. O 'quero sim, me manda o pix' foi ha 12 dias e o pix nunca caiu."
+    },
+    {
+      "id": "gabi",
+      "valorTotal": 990,
+      "estado": "travado",
+      "motivo": "terceiro",
+      "temperatura": "quente",
+      "nota": "990 e o preco no pix que ficou na mesa; o seed guarda o 1.050 de tabela."
+    },
+    {
+      "id": "elaine",
+      "valorTotal": 130,
+      "estado": "travado",
+      "motivo": "sem_grana",
+      "temperatura": "frio",
+      "nota": "Ela cortou de 2x pra 1x por semana e depois adiou pro mes que vem: o compromisso vivo e uma sessao de 130."
+    },
+    {
+      "id": "viviane",
+      "valorTotal": 1050,
+      "estado": "travado",
+      "motivo": "sem_grana",
+      "temperatura": "frio",
+      "nota": "Audio de 39s. Mensagem recente, mas desemprego declarado e objecao dura: frio apesar dos 3 dias."
+    },
+    {
+      "id": "eduarda",
+      "valorTotal": 390,
+      "estado": "travado",
+      "motivo": "preco",
+      "temperatura": "morno",
+      "nota": "Audio de 36s e dois itens (limpeza 140 + peeling 280 = 420) fechados em 390 no pix. O seed guarda 420; rotulei o valor negociado."
+    },
+    {
+      "id": "roberta",
+      "valorTotal": 490,
+      "estado": "travado",
+      "motivo": "pacote_parado",
+      "temperatura": "frio",
+      "nota": "Audio de 52s. Valor implicito: 5 sessoes de massagem x 98 (980/10). 60 dias parada."
+    },
+    {
+      "id": "leticia",
+      "valorTotal": 980,
+      "estado": "orcado",
+      "motivo": null,
+      "temperatura": "quente"
+    },
+    {
+      "id": "daniela",
+      "valorTotal": 70,
+      "estado": "acordado",
+      "motivo": null,
+      "temperatura": "quente",
+      "nota": "Seed nao tem compromisso; o dialogo marca 9h e a loja diz o servico e o preco: design com henna, 70."
+    },
+    {
+      "id": "vanessa",
+      "valorTotal": null,
+      "estado": "novo",
+      "motivo": null,
+      "temperatura": "frio",
+      "nota": "Sem compromisso: so pergunta de forma de pagamento, nenhum servico citado. Valor tem que vir null."
+    },
+    {
+      "id": "debora",
+      "valorTotal": null,
+      "estado": "novo",
+      "motivo": null,
+      "temperatura": "frio",
+      "nota": "Sem compromisso: pergunta de endereco."
+    },
+    {
+      "id": "kelly",
+      "valorTotal": null,
+      "estado": "novo",
+      "motivo": null,
+      "temperatura": "frio",
+      "nota": "Sem compromisso: pergunta de horario de funcionamento."
+    },
+    {
+      "id": "cristiane",
+      "valorTotal": null,
+      "estado": "novo",
+      "motivo": null,
+      "temperatura": "morno",
+      "nota": "Cita pacote de laser mas diz 'so pra ter uma ideia' e a loja nunca respondeu: nada foi orcado. E a linha que mais pega falso positivo, porque a tabela tem um preco de laser pronto pra ser chutado."
+    }
+  ]
+}
