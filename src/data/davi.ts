@@ -14,7 +14,13 @@ export const FERNANDA: Conversa = {
     { id: 'fernanda-4', autor: 'cliente', texto: 'sumi né kkkk ainda tenho sessão sobrando?', min: 42 },
   ],
   compromisso: {
-    itens: [{ descricao: 'Pacote depilação a laser · 4 de 10 sessões restantes', valor: 420 }],
+    itens: [
+      { descricao: 'Pacote depilação a laser · 4 de 10 sessões restantes', valor: 420 },
+      // O combo do upsell precisa estar nos dados: a guarda anti-preço-inventado
+      // só libera valor que exista no compromisso ou no histórico da conversa.
+      { descricao: 'Limpeza de pele no combo (avulsa 140)', valor: 90 },
+      { descricao: 'Limpeza de pele avulsa', valor: 140 },
+    ],
     valorTotal: 420,
     estado: 'travado',
     motivo: 'pacote_parado',
