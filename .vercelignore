@@ -1,0 +1,10 @@
+# Secrets — never upload
+.env
+.env.*
+!.env.example
+
+# Not needed for the build
+design/
+scripts/
+dist/
+node_modules/
