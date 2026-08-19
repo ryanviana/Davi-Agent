@@ -25,3 +25,9 @@ dist-ssr
 
 # Serena MCP local state
 .serena/
+
+# Vercel CLI local link state
+.vercel/
+
+.env.local
+.env
