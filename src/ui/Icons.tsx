@@ -6,8 +6,18 @@ const s = (p: { d: string; size?: number; w?: number; fill?: string }) => (
 )
 
 export const IcChat = (p: { size?: number }) => s({ ...p, d: 'M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z' })
-export const IcStatus = (p: { size?: number }) => s({ ...p, d: 'M12 3a9 9 0 1 0 9 9' })
-export const IcCanal = (p: { size?: number }) => s({ ...p, d: 'M4 9v6h4l5 4V5L8 9H4zM17 9.5a4 4 0 0 1 0 5' })
+export const IcStatus = (p: { size?: number }) => (
+  <svg width={p.size ?? 22} height={p.size ?? 22} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    strokeWidth="1.8" strokeLinecap="round" strokeDasharray="3.4 3.1">
+    <circle cx="12" cy="12" r="8.6" />
+  </svg>
+)
+export const IcCanal = (p: { size?: number }) => (
+  <svg width={p.size ?? 22} height={p.size ?? 22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.5 11.6a8.5 8.5 0 0 1-8.5 8.4 8.7 8.7 0 0 1-3.7-.8L3.5 20.5l1.4-4.6a8.4 8.4 0 0 1 7.1-12.4 8.5 8.5 0 0 1 8.5 8.1z" />
+    <path d="M9.2 12.2h5.6M9.2 9.4h5.6" />
+  </svg>
+)
 export const IcNovo = (p: { size?: number }) => s({ ...p, d: 'M12 5v14M5 12h14' })
 export const IcMenu = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -24,9 +34,19 @@ export const IcClipe = () => s({ d: 'M17 8l-7.6 7.6a2.6 2.6 0 0 0 3.7 3.7L21 11a
 export const IcMic = () => s({ d: 'M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zM19 11a7 7 0 0 1-14 0M12 18v3', size: 24 })
 export const IcEnviar = () => s({ d: 'M21 3L3 10.5l7.5 3L14 21z', size: 22, w: 2 })
 export const IcDavi = (p: { size?: number }) => (
-  <svg width={p.size ?? 22} height={p.size ?? 22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 18c4-1 5-4 5-7 0-2.5 1.4-4.5 3.5-4.5S16 8.2 16 10.4c0 2.6-2 4.1-4 4.1" />
-    <circle cx="19" cy="6" r="2.1" />
+  <svg width={p.size ?? 22} height={p.size ?? 22} viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    {/* crista */}
+    <path d="M12 2.6c2.6 0 3.7 1.7 3.7 3.4" />
+    {/* domo do capacete */}
+    <path d="M5.5 12.1a6.5 6.5 0 0 1 13 0" />
+    {/* aba e protetor de nuca */}
+    <path d="M5.5 12.1v3.2a1.9 1.9 0 0 0 1.9 1.9h1.1" />
+    <path d="M18.5 12.1v1.6" />
+    {/* protetor nasal */}
+    <path d="M12 12.1v4.6" />
+    {/* ombros */}
+    <path d="M3.6 21.4a8.4 8.4 0 0 1 16.8 0" />
   </svg>
 )
 export const IcPin = () => (
@@ -42,9 +62,8 @@ export const IcPlay = () => (
 )
 
 export const IcNovaConversa = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 12.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6.5" />
-    <path d="M18.4 3.6a2 2 0 0 1 2.8 2.8L13.5 14l-3.5.9.9-3.5z" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3.5" y="3.5" width="17" height="17" rx="3.4" /><path d="M12 8.4v7.2M8.4 12h7.2" />
   </svg>
 )
 export const IcConfig = () => (
@@ -99,5 +118,20 @@ export const IcMudo = () => (
 export const IcCadeado = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="4.5" y="10.5" width="15" height="10" rx="2" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+  </svg>
+)
+
+export const IcVideo = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2.5" y="6" width="13" height="12" rx="2.4" /><path d="m15.5 11 6-3.4v8.8l-6-3.4z" />
+  </svg>
+)
+export const IcMais = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+)
+
+export const IcLigacaoCheia = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M6.6 3.2H4.5A1.5 1.5 0 0 0 3 4.8C3 13.2 10.8 21 19.2 21a1.5 1.5 0 0 0 1.5-1.5v-2.1a1.3 1.3 0 0 0-1-1.3l-3-.7a1.3 1.3 0 0 0-1.3.5l-1 1.3a14.2 14.2 0 0 1-5-5l1.3-1a1.3 1.3 0 0 0 .5-1.3l-.7-3a1.3 1.3 0 0 0-1.3-1z" />
   </svg>
 )
