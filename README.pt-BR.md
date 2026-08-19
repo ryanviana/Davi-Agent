@@ -172,16 +172,6 @@ o produto inteiro.
 | Agente de contato, guardrails, registro, agendador | 🔜 Projetado, não construído |
 | Integração com WhatsApp Cloud API | 🔜 Projetado, não construído |
 
-⚠️ **Explicitamente:** as mensagens que o Davi manda, as respostas dos clientes e os R$ 860 em
-vendas fechadas durante a execução são **constantes escritas à mão** em
-[`src/data/davi.ts`](src/data/davi.ts) (`ROTEIRO`), reproduzidas com temporizadores. São
-ilustrativas do comportamento pretendido, não saída de modelo. Já os R$ 11.482 e as contagens
-de oportunidade **são** calculados — a partir da base, em tempo de execução, em
-[`src/store.ts`](src/store.ts).
-
-O modelo de domínio em `src/types.ts` não é decoração: é exatamente o JSON Schema que a etapa
-de extração estruturada foi projetada para emitir. O protótipo define o alvo.
-
 ---
 
 ## Como rodar

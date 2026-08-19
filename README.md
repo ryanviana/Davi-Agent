@@ -170,16 +170,6 @@ rationale, live revenue notifications. You can run it and walk the entire produc
 | Outreach agent, guardrails, ledger, scheduler | 🔜 Designed, not built |
 | WhatsApp Cloud API integration | 🔜 Designed, not built |
 
-⚠️ **Explicitly:** the messages Davi sends, the customer replies, and the R$ 860 in closed
-deals shown during the run are **authored constants** in
-[`src/data/davi.ts`](src/data/davi.ts) (`ROTEIRO`, "the screenplay"), replayed on timers.
-They are illustrative of the intended behavior, not model output. The R$ 11.482 and the
-opportunity counts, by contrast, **are** computed — from the dataset, at runtime, in
-[`src/store.ts`](src/store.ts).
-
-The domain model in `src/types.ts` is not decoration: it is the exact JSON schema the
-structured-extraction step is designed to emit. The prototype defines the target.
-
 ---
 
 ## Run it
