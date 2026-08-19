@@ -32,8 +32,9 @@ body.landing-mode #root { height: auto; }
 .lp .serif { font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif; font-weight: 400; }
 .lp .mono  { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
 
-.lp a { color: var(--amber2); text-decoration: none; }
+.lp a { color: var(--amber2); text-decoration: none; transition: color .15s ease, background-color .15s ease, border-color .15s ease; }
 .lp a:hover { color: var(--ink); }
+.lp a:focus-visible { outline: 2px solid var(--amber2); outline-offset: 3px; border-radius: 2px; }
 .lp h1, .lp h2, .lp h3, .lp p { margin: 0; }
 
 .lp-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
@@ -47,17 +48,19 @@ body.landing-mode #root { height: auto; }
 .lp-marca span:first-child { font-size: 34px; letter-spacing: -.015em; }
 .lp-ponto { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); display: block; }
 .lp-nav-links { display: flex; align-items: center; gap: 36px; }
-.lp-nav-links a { font-size: 15px; color: var(--ink2); }
+.lp .lp-nav-links a:not(.lp-btn) { font-size: 15px; color: var(--ink2); }
+.lp .lp-nav-links a:not(.lp-btn):hover { color: var(--ink); }
 
-.lp-btn {
+.lp a.lp-btn, .lp .lp-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 11px;
-  height: 58px; padding: 0 30px; border-radius: 999px;
-  background: var(--ink); color: var(--paper); font-size: 17px; font-weight: 500;
+  height: 56px; padding: 0 28px; border-radius: 999px;
+  background: var(--ink); color: var(--paper); font-size: 16.5px; font-weight: 500;
+  border: 1px solid var(--ink);
 }
-.lp-btn:hover { background: #000; color: var(--paper); }
-.lp-btn.sm { height: 46px; padding: 0 22px; font-size: 15px; gap: 9px; }
-.lp-btn.ghost { background: none; color: var(--ink); border: 1px solid var(--rule); }
-.lp-btn.ghost:hover { background: var(--paper2); color: var(--ink); }
+.lp a.lp-btn:hover, .lp .lp-btn:hover { background: #2A231C; border-color: #2A231C; color: #fff; }
+.lp a.lp-btn.sm, .lp .lp-btn.sm { height: 44px; padding: 0 20px; font-size: 15px; gap: 9px; }
+.lp a.lp-btn.ghost, .lp .lp-btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.lp a.lp-btn.ghost:hover, .lp .lp-btn.ghost:hover { background: var(--paper2); border-color: var(--ink3); color: var(--ink); }
 
 /* ---------------------------------------------------------------- hero */
 .lp-hero {
@@ -73,7 +76,8 @@ body.landing-mode #root { height: auto; }
 }
 .lp-sub { font-size: 18.5px; line-height: 1.5; color: var(--ink2); max-width: 540px; text-wrap: pretty; }
 .lp-cta-linha { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.lp-link-sub { font-size: 17px; color: var(--ink2); border-bottom: 1px solid var(--rule); padding-bottom: 3px; }
+.lp a.lp-link-sub { font-size: 16.5px; color: var(--ink2); border-bottom: 1px solid var(--rule); padding-bottom: 4px; }
+.lp a.lp-link-sub:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .lp-selo {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   font-size: 12.5px; color: var(--ink3); letter-spacing: .04em; text-transform: uppercase;

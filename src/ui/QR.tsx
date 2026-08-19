@@ -90,8 +90,20 @@ export default function QR() {
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 26, fontSize: 13, color: 'rgba(255,255,255,.45)', fontVariantNumeric: 'tabular-nums' }}>
-          código de pareamento {codigo}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 26 }}>
+          <button
+            onClick={() => conectar()}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 9,
+              background: '#21C063', color: '#0A0A0A',
+              fontSize: 15, fontWeight: 500, padding: '12px 26px', borderRadius: 999,
+            }}>
+            ou clique aqui para entrar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </button>
+          <span style={{ fontSize: 13, color: 'rgba(255,255,255,.45)', fontVariantNumeric: 'tabular-nums' }}>
+            código de pareamento {codigo}
+          </span>
         </div>
       </div>
     </div>
