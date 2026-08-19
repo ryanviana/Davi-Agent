@@ -1,0 +1,352 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #FBF8F3; }
+    a { color: #A15A08; text-decoration: none; }
+    a:hover { color: #17130F; }
+    .serif { font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-weight: 400; }
+    .mono { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; }
+  </style>
+</helmet>
+
+<div style="width: 390px; background: #FBF8F3; color: #17130F; font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;">
+
+  <!-- NAV -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 22px 0 22px;">
+    <div style="display: flex; align-items: baseline; gap: 7px;">
+      <span class="serif" style="font-size: 28px; letter-spacing: -0.015em;">davi</span>
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: #F0A63C; display: block;"></span>
+    </div>
+    <a href="/app" style="display: flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; background: #17130F; color: #FBF8F3; font-size: 15px; font-weight: 500;">Ver rodando</a>
+  </div>
+
+  <!-- HERO -->
+  <div style="padding: 44px 22px 0 22px; display: flex; flex-direction: column; gap: 24px;">
+    <h1 class="serif" style="margin: 0; font-size: 48px; line-height: 1.02; letter-spacing: -0.02em;">
+      A inteligência de vendas das grandes, na mão do <span style="text-decoration: underline; text-decoration-color: #F0A63C; text-decoration-thickness: 6px; text-underline-offset: 6px; text-decoration-skip-ink: none;">pequeno negócio</span>.
+    </h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #6E635A; text-wrap: pretty;">
+      O Davi lê as conversas que já existem no seu WhatsApp, acha o dinheiro que parou no meio do caminho e vai atrás. No seu tom. Sem você digitar nada.
+    </p>
+    <a href="/app" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 999px; background: #17130F; color: #FBF8F3; font-size: 17px; font-weight: 500;">
+      Ver o Davi rodando
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M13 6l6 6-6 6"></path></svg>
+    </a>
+    <div class="mono" style="display: flex; align-items: center; gap: 10px; font-size: 11.5px; color: #9A8E82; letter-spacing: 0.04em; text-transform: uppercase;">
+      <span>OpenAI Hackathon Brasil</span>
+      <span style="width: 4px; height: 4px; border-radius: 50%; background: #E3D9CB; display: block;"></span>
+      <span>gpt-5-mini</span>
+    </div>
+  </div>
+
+  <!-- PROVA: painel do Davi -->
+  <div style="padding: 40px 22px 0 22px;">
+    <div style="background: #161717; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 50px -30px rgba(23,19,15,.5); font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif;">
+      <div style="height: 58px; background: #1D1F1F; display: flex; align-items: center; gap: 12px; padding: 0 14px;">
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #241a0c; border: 1.5px solid #f0a63c; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0a63c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 10l-5.8 1.4L12 17l-2.2-5.6L4 10l5.8-1.4L12 3z"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1px; flex-grow: 1; min-width: 0;">
+          <span style="font-size: 15px; color: #FAFAFA;">Davi</span>
+          <span style="font-size: 12px; color: rgba(255,255,255,.6);">24 conversas · 1.412 mensagens</span>
+        </div>
+      </div>
+      <div style="padding: 16px 14px 18px 14px; display: flex; flex-direction: column; gap: 9px;">
+        <div style="background: #242626; border-radius: 8px; border-top-left-radius: 0; padding: 8px 10px 9px 11px; font-size: 13.5px; line-height: 19px; color: #FAFAFA;">
+          Terminei de ler. Achei dinheiro parado que ninguém tocou.
+        </div>
+        <div style="background: #242626; border-radius: 8px; border-top-left-radius: 0; padding: 16px 16px 6px 16px;">
+          <div style="font-size: 11.5px; color: rgba(255,255,255,.6); letter-spacing: 0.04em; text-transform: uppercase;">Parado agora</div>
+          <div style="font-size: 36px; line-height: 1.1; color: #21C063; font-weight: 300; letter-spacing: -0.02em; padding: 5px 0 2px 0; font-variant-numeric: tabular-nums;">R$ 11.762</div>
+          <div style="font-size: 12.5px; color: rgba(255,255,255,.6); padding-bottom: 10px;">em 23 compromissos abertos</div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.1);">
+              <span style="flex-grow: 1; font-size: 13px; color: #FAFAFA;">Pacote parado, 4 sessões</span>
+              <span style="font-size: 13px; color: rgba(255,255,255,.6);">R$ 420</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.1);">
+              <span style="flex-grow: 1; font-size: 13px; color: #FAFAFA;">Orçamento sem resposta</span>
+              <span style="font-size: 13px; color: rgba(255,255,255,.6);">R$ 1.050</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px 0 12px 0; border-top: 1px solid rgba(255,255,255,.1);">
+              <span style="flex-grow: 1; font-size: 13px; color: rgba(255,255,255,.45);">+ 21 compromissos</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 11.5px; color: rgba(255,255,255,.42); padding: 2px;">Nenhum dado foi digitado.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 PROBLEMA -->
+  <div style="padding: 72px 22px 0 22px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px;">
+      <span class="mono" style="font-size: 11.5px; color: #A15A08; letter-spacing: 0.08em;">01</span>
+      <span class="mono" style="font-size: 11.5px; color: #9A8E82; letter-spacing: 0.08em; text-transform: uppercase;">O problema</span>
+      <span style="flex-grow: 1; height: 1px; background: #E3D9CB; display: block;"></span>
+    </div>
+    <h2 class="serif" style="margin: 0 0 24px 0; font-size: 40px; line-height: 1.03; letter-spacing: -0.02em;">
+      As vendas não se perdem pro concorrente. Se perdem no <span style="font-style: italic;">silêncio</span>.
+    </h2>
+    <svg width="346" height="52" viewBox="0 0 346 52" fill="none" style="display: block;">
+      <line x1="0" y1="24" x2="150" y2="24" stroke="#17130F" stroke-width="1.5"></line>
+      <circle cx="16" cy="24" r="5" fill="#17130F"></circle>
+      <circle cx="80" cy="24" r="5" fill="#17130F"></circle>
+      <circle cx="140" cy="24" r="5" fill="#17130F"></circle>
+      <line x1="150" y1="24" x2="340" y2="24" stroke="#F0A63C" stroke-width="1.5" stroke-dasharray="2 11" stroke-linecap="round"></line>
+      <text x="0" y="46" fill="#6E635A" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="0.06em">ORÇAMENTO</text>
+      <text x="70" y="46" fill="#6E635A" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="0.06em">"TE FALO"</text>
+      <text x="215" y="46" fill="#A15A08" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="0.06em">NINGUÉM VOLTOU</text>
+    </svg>
+    <div style="display: flex; flex-direction: column; border-top: 1px solid #17130F; margin-top: 28px;">
+      <div style="display: flex; flex-direction: column; gap: 4px; padding: 20px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="serif" style="font-size: 46px; line-height: 1; letter-spacing: -0.02em;">8 em 10</span>
+        <span style="font-size: 15px; color: #6E635A;">pequenos negócios no Brasil vendem pelo WhatsApp</span>
+        <span class="mono" style="font-size: 11px; color: #9A8E82; letter-spacing: 0.05em;">SEBRAE</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding: 20px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="serif" style="font-size: 46px; line-height: 1; letter-spacing: -0.02em; color: #A15A08;">20 a 40%</span>
+        <span style="font-size: 15px; color: #6E635A;">das oportunidades morrem por falta de resposta</span>
+        <span class="mono" style="font-size: 11px; color: #9A8E82; letter-spacing: 0.05em;">DATACRAZY</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding: 20px 0;">
+        <span class="serif" style="font-size: 46px; line-height: 1; letter-spacing: -0.02em;">R$ 11.762</span>
+        <span style="font-size: 15px; color: #6E635A;">parados em 23 compromissos, num único salão de bairro</span>
+        <span class="mono" style="font-size: 11px; color: #9A8E82; letter-spacing: 0.05em;">MEDIDO PELO DAVI EM 30 SEGUNDOS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 O QUE FAZ -->
+  <div style="margin-top: 72px; background: #F3EDE3; padding: 56px 22px 60px 22px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px;">
+      <span class="mono" style="font-size: 11.5px; color: #A15A08; letter-spacing: 0.08em;">02</span>
+      <span class="mono" style="font-size: 11.5px; color: #9A8E82; letter-spacing: 0.08em; text-transform: uppercase;">O que ele faz</span>
+      <span style="flex-grow: 1; height: 1px; background: #E3D9CB; display: block;"></span>
+    </div>
+    <h2 class="serif" style="margin: 0 0 30px 0; font-size: 38px; line-height: 1.05; letter-spacing: -0.02em;">
+      Um vendedor que já leu tudo, nunca esquece e sabe a hora de parar.
+    </h2>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="background: #FBF8F3; border: 1px solid #E3D9CB; border-radius: 4px; padding: 22px 20px 24px 20px; display: flex; flex-direction: column; gap: 12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A15A08" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"></path><path d="M8 9h8"></path><path d="M8 12.5h5"></path></svg>
+        <h3 style="margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">Lê o histórico inteiro</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #6E635A;">Todas as conversas, inclusive áudio com gíria. Extrai valor, estado e o motivo de ter travado — com um nível de confiança em cada campo.</p>
+      </div>
+      <div style="background: #FBF8F3; border: 1px solid #E3D9CB; border-radius: 4px; padding: 22px 20px 24px 20px; display: flex; flex-direction: column; gap: 12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A15A08" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5L21 21"></path><path d="M11 8v6"></path><path d="M8 11h6"></path></svg>
+        <h3 style="margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">Acha o que parou</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #6E635A;">Orçamento sem resposta, pacote pago e não usado, "vou pensar" vencido, Pix prometido que nunca caiu.</p>
+      </div>
+      <div style="background: #FBF8F3; border: 1px solid #E3D9CB; border-radius: 4px; padding: 22px 20px 24px 20px; display: flex; flex-direction: column; gap: 12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A15A08" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-7-6 16-2.5-6.5L4 12z"></path></svg>
+        <h3 style="margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em;">Volta no seu tom</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #6E635A;">Escreve como você escreve, e escolhe o ângulo que converte na sua operação — não o que converte "em média".</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 A CENA -->
+  <div style="padding: 72px 22px 0 22px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px;">
+      <span class="mono" style="font-size: 11.5px; color: #A15A08; letter-spacing: 0.08em;">03</span>
+      <span class="mono" style="font-size: 11.5px; color: #9A8E82; letter-spacing: 0.08em; text-transform: uppercase;">A cena</span>
+      <span style="flex-grow: 1; height: 1px; background: #E3D9CB; display: block;"></span>
+    </div>
+    <h2 class="serif" style="margin: 0 0 12px 0; font-size: 40px; line-height: 1.03; letter-spacing: -0.02em;">
+      A Fernanda sumiu há quatro meses com quatro sessões pagas.
+    </h2>
+    <p style="margin: 0 0 26px 0; font-size: 16.5px; color: #6E635A;">Ninguém no salão lembrava. O Davi lembrou em trinta segundos.</p>
+
+    <div style="background: #161717; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 50px -32px rgba(23,19,15,.5); font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif;">
+      <div style="height: 56px; background: #1D1F1F; display: flex; align-items: center; gap: 12px; padding: 0 14px;">
+        <div style="width: 34px; height: 34px; border-radius: 50%; background: #e8bfd0; color: #0A0A0A; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0;">FK</div>
+        <span style="font-size: 15px; color: #FAFAFA;">Fernanda Klein</span>
+      </div>
+      <div style="padding: 14px 16px 18px 16px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="align-self: flex-start; max-width: 84%; background: #242626; border-radius: 8px; border-top-left-radius: 0; padding: 6px 9px 8px 11px; font-size: 13.5px; line-height: 19px; color: #FAFAFA;">vou ver minha agenda e te falo!</div>
+        <div style="display: flex; align-items: center; gap: 10px; margin: 12px 0;">
+          <span style="flex-grow: 1; height: 1px; background: rgba(240,166,60,.35); display: block;"></span>
+          <span style="font-size: 12px; color: #f0a63c;">124 dias de silêncio</span>
+          <span style="flex-grow: 1; height: 1px; background: rgba(240,166,60,.35); display: block;"></span>
+        </div>
+        <div style="align-self: flex-start; max-width: 84%; background: #242626; border-radius: 8px; border-top-left-radius: 0; padding: 6px 9px 8px 11px; font-size: 13.5px; line-height: 19px; color: #FAFAFA;">sumi né kkkk ainda tenho sessão sobrando?</div>
+        <div style="align-self: flex-end; max-width: 88%; background: #144D37; border-radius: 8px; border-top-right-radius: 0; padding: 6px 9px 8px 11px; font-size: 13.5px; line-height: 19px; color: #FAFAFA; margin-top: 10px;">Fernanda!! Tem sim, sobraram 4 sessões do seu laser, e elas não vencem 😊 Reservo pra vc essa semana?</div>
+        <div style="align-self: flex-end; font-size: 11.5px; color: rgba(255,255,255,.42); padding: 4px 2px 0 0;">escrito pelo Davi · aprovado por você</div>
+        <div style="align-self: flex-start; max-width: 84%; background: #242626; border-radius: 8px; border-top-left-radius: 0; padding: 6px 9px 8px 11px; font-size: 13.5px; line-height: 19px; color: #FAFAFA; margin-top: 10px;">quero sim!</div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; border-top: 1px solid #17130F; margin-top: 32px;">
+      <div style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="mono" style="width: 96px; flex-shrink: 0; font-size: 12px; color: #9A8E82;">valor</span>
+        <span style="flex-grow: 1; font-size: 16px;">R$ 420</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="mono" style="width: 96px; flex-shrink: 0; font-size: 12px; color: #9A8E82;">estado</span>
+        <span style="flex-grow: 1; font-size: 16px;">travado</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="mono" style="width: 96px; flex-shrink: 0; font-size: 12px; color: #9A8E82;">motivo</span>
+        <span style="flex-grow: 1; font-size: 16px;">pacote parado</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="mono" style="width: 96px; flex-shrink: 0; font-size: 12px; color: #9A8E82;">temperatura</span>
+        <span style="flex-grow: 1; font-size: 16px; color: #A15A08;">quente</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 14px; padding: 13px 0;">
+        <span class="mono" style="width: 96px; flex-shrink: 0; font-size: 12px; color: #9A8E82;">confiança</span>
+        <span style="flex-grow: 1; display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 16px; font-variant-numeric: tabular-nums;">0,92</span>
+          <span style="flex-grow: 1; height: 4px; background: #E3D9CB; border-radius: 2px; display: block; position: relative; overflow: hidden;">
+            <span style="position: absolute; left: 0; top: 0; bottom: 0; width: 92%; background: #17130F; display: block;"></span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 14px; background: #17130F; border-radius: 4px; padding: 20px 22px; margin-top: 24px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#21C063" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 12.5l5 5L20 6.5"></path></svg>
+      <span style="flex-grow: 1; font-size: 15.5px; color: #FBF8F3; line-height: 1.4;">Remarcou e ainda levou o combo.</span>
+      <span class="serif" style="font-size: 28px; color: #21C063; letter-spacing: -0.01em; white-space: nowrap;">R$ 510</span>
+    </div>
+  </div>
+
+  <!-- 04 SABER PARAR -->
+  <div style="margin-top: 72px; background: #F3EDE3; padding: 56px 22px 60px 22px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px;">
+      <span class="mono" style="font-size: 11.5px; color: #A15A08; letter-spacing: 0.08em;">04</span>
+      <span class="mono" style="font-size: 11.5px; color: #9A8E82; letter-spacing: 0.08em; text-transform: uppercase;">O que ele recusa</span>
+      <span style="flex-grow: 1; height: 1px; background: #E3D9CB; display: block;"></span>
+    </div>
+    <h2 class="serif" style="margin: 0 0 18px 0; font-size: 40px; line-height: 1.03; letter-spacing: -0.02em;">Saber parar também é o produto.</h2>
+    <p style="margin: 0 0 26px 0; font-size: 16.5px; line-height: 1.6; color: #6E635A; text-wrap: pretty;">
+      Um falso positivo não custa uma mensagem. Custa uma cliente. Por isso a decisão de enviar não é do modelo: é de código.
+    </p>
+
+    <div style="background: #FBF8F3; border: 1px solid #E3D9CB; border-top: 2px solid #A8321C; border-radius: 3px; padding: 22px 20px 24px 20px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8321C" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+        <span style="font-size: 18px; font-weight: 600; flex-grow: 1;">Não enviar — Priscila</span>
+      </div>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #6E635A;">Três toques sem uma única resposta. O quarto converte 2% no histórico desta operação e queima a cliente.</p>
+      <span class="mono" style="align-self: flex-start; font-size: 11.5px; color: #A8321C; border: 1px solid rgba(168,50,28,.3); border-radius: 999px; padding: 5px 11px;">PAUSADO POR 30 DIAS</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; border-top: 1px solid #17130F; margin-top: 24px;">
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="mono" style="font-size: 11px; color: #A8321C; width: 66px; flex-shrink: 0;">BLOQUEIA</span>
+        <span style="flex-grow: 1; font-size: 15.5px;">preço que a loja nunca falou</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #E3D9CB;">
+        <span class="mono" style="font-size: 11px; color: #A8321C; width: 66px; flex-shrink: 0;">BLOQUEIA</span>
+        <span style="flex-grow: 1; font-size: 15.5px;">promessa que a agenda não sustenta</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 12px; padding: 13px 0;">
+        <span class="mono" style="font-size: 11px; color: #A8321C; width: 66px; flex-shrink: 0;">SEGURA</span>
+        <span style="flex-grow: 1; font-size: 15.5px;">confiança abaixo do limiar vai pra revisão</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 O MOTOR -->
+  <div style="background: #161717; color: #FAFAFA; padding: 56px 22px 60px 22px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px;">
+      <span class="mono" style="font-size: 11.5px; color: #f0a63c; letter-spacing: 0.08em;">05</span>
+      <span class="mono" style="font-size: 11.5px; color: rgba(255,255,255,.45); letter-spacing: 0.08em; text-transform: uppercase;">O motor</span>
+      <span style="flex-grow: 1; height: 1px; background: rgba(255,255,255,.14); display: block;"></span>
+    </div>
+    <h2 class="serif" style="margin: 0 0 18px 0; font-size: 38px; line-height: 1.04; letter-spacing: -0.02em;">
+      Chatbot fala quando o cliente escreve. O Davi age quando ele para.
+    </h2>
+    <p style="margin: 0 0 26px 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.62); text-wrap: pretty;">
+      O gatilho não é uma mensagem chegando — é uma promessa vencendo. O modelo extrai e redige; quem decide se pode enviar é código.
+    </p>
+    <div style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,.16);">
+      <div style="display: flex; align-items: flex-start; gap: 18px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1);">
+        <span class="serif" style="width: 90px; flex-shrink: 0; font-size: 40px; line-height: 1; letter-spacing: -0.02em;">169</span>
+        <span style="flex-grow: 1; font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.62); padding-top: 6px;">toques já resolvidos alimentam a curva. A régua não é configurada — é medida.</span>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 18px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1);">
+        <span class="serif" style="width: 90px; flex-shrink: 0; font-size: 40px; line-height: 1; letter-spacing: -0.02em;">20</span>
+        <span style="flex-grow: 1; font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.62); padding-top: 6px;">conversas rotuladas à mão para medir a extração contra um gabarito.</span>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 18px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1);">
+        <span class="serif" style="width: 90px; flex-shrink: 0; font-size: 40px; line-height: 1; letter-spacing: -0.02em; color: #21C063;">0</span>
+        <span style="flex-grow: 1; font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.62); padding-top: 6px;">preços inventados. O erro que faz o Davi cobrar quem não deve nada.</span>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 18px; padding: 18px 0;">
+        <span class="serif" style="width: 90px; flex-shrink: 0; font-size: 40px; line-height: 1; letter-spacing: -0.02em; color: #f0a63c;">[X]%</span>
+        <span style="flex-grow: 1; font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.62); padding-top: 6px;">de precisão na extração <span style="color: #f0a63c;">[PREENCHER APÓS O EVAL]</span>. gpt-5-mini, ~1,7s por conversa.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 COMEÇAR + FECHO -->
+  <div style="padding: 64px 22px 0 22px;">
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px;">
+      <span class="mono" style="font-size: 11.5px; color: #A15A08; letter-spacing: 0.08em;">06</span>
+      <span class="mono" style="font-size: 11.5px; color: #9A8E82; letter-spacing: 0.08em; text-transform: uppercase;">Começar</span>
+      <span style="flex-grow: 1; height: 1px; background: #E3D9CB; display: block;"></span>
+    </div>
+    <h2 class="serif" style="margin: 0 0 24px 0; font-size: 40px; line-height: 1.03; letter-spacing: -0.02em;">O onboarding inteiro é um QR code.</h2>
+    <div style="display: flex; flex-direction: column; border-top: 1px solid #17130F;">
+      <div style="display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid #E3D9CB;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#17130F" stroke-width="1.8" stroke-linecap="round" style="flex-shrink: 0;"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+        <span style="flex-grow: 1; font-size: 18px;">Nada para instalar.</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid #E3D9CB;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#17130F" stroke-width="1.8" stroke-linecap="round" style="flex-shrink: 0;"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+        <span style="flex-grow: 1; font-size: 18px;">Nada para preencher.</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 16px 0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#17130F" stroke-width="1.8" stroke-linecap="round" style="flex-shrink: 0;"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+        <span style="flex-grow: 1; font-size: 18px;">Nada muda na rotina.</span>
+      </div>
+    </div>
+
+    <h2 class="serif" style="margin: 56px 0 26px 0; font-size: 52px; line-height: 0.99; letter-spacing: -0.025em;">Todo pequeno negócio merece seu Davi.</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <a href="/app" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 999px; background: #17130F; color: #FBF8F3; font-size: 17px; font-weight: 500;">
+        Ver o Davi rodando
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+      <div style="display: flex; gap: 12px;">
+        <a href="[LINK DO REPOSITÓRIO]" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 999px; border: 1px solid #E3D9CB; color: #17130F; font-size: 16px;">Repositório</a>
+        <a href="[LINK DO VÍDEO]" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 999px; border: 1px solid #E3D9CB; color: #17130F; font-size: 16px;">Vídeo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <div style="margin-top: 56px; border-top: 1px solid #E3D9CB; padding: 24px 22px 34px 22px; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; align-items: baseline; gap: 7px;">
+      <span class="serif" style="font-size: 24px; letter-spacing: -0.015em;">davi</span>
+      <span style="width: 5px; height: 5px; border-radius: 50%; background: #F0A63C; display: block;"></span>
+    </div>
+    <div class="mono" style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: #9A8E82; letter-spacing: 0.05em; text-transform: uppercase;">
+      <span>[NOMES DA EQUIPE]</span>
+      <span>OpenAI Hackathon Brasil · 2026</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

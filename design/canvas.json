@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Desktop 1440", "x": 0, "y": 0, "w": 1440, "h": 6618 },
+    { "file": "Mobile.dc.html", "title": "Mobile 390", "x": 1600, "y": 0, "w": 390, "h": 6552 }
+  ],
+  "annotations": [
+    { "id": "placeholders", "x": 2100, "y": 0, "w": 300, "text": "Preencher antes do palco:\n· [LINK DO REPOSITÓRIO]\n· [LINK DO VÍDEO]\n· [NOMES DA EQUIPE]\n· [X]% de precisão (rodar o eval)\n\nCTA /app aponta pra tela do QR." },
+    { "id": "dados", "x": 2100, "y": 300, "w": 300, "text": "Números vieram do repo, não do roteiro do pitch: R$ 11.762 em 23 compromissos (Studio Lumi, salão), 169 toques no histórico, 20 conversas rotuladas no eval." }
+  ],
+  "launch": { "view": "canvas" }
+}
